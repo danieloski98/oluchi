@@ -1,0 +1,22 @@
+.parent{
+
+  .left{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../../../../assets/images/registerbg2.jpg');
+    background-size: cover;
+    background-position: center;
+
+    .max{
+      width: inherit;
+      height: inherit;
+      padding-top: 20px;
+      padding-left: 20px;
+      background-color: #7870e754
+    }
+
+    h2{
+      font-family: 'Poppins', sans-serif
+    }
+  }
+}

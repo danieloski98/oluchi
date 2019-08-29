@@ -1,0 +1,34 @@
+.parent{
+  padding-top: 1%;
+  padding-bottom: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  .active{
+    color:  #13be3a;
+    background-color: #9df8b1;
+    border-radius: 5px;
+  }
+
+  .link{
+    color: #13be3a !important;
+  }
+
+  .name{
+    font-family: "Poppins", sans-serif;
+    margin-top: 0px;
+    cursor: pointer;
+  }
+
+  .right{
+
+    p{
+      margin-right: 0px;
+      color: grey;
+      text-align: center;
+      padding: 8px;
+      width: 150px;
+      cursor: pointer;
+    }
+  }
+}

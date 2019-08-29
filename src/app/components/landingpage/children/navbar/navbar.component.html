@@ -1,0 +1,28 @@
+<div class="parent" *ngIf="show">
+  <div class="d-flex justify-content-between">
+    <div class="left">
+        <h3 routerLink="/home" class="name tx">AuthPass</h3>
+    </div>
+    <div class=" right d-flex list">
+      <p routerLinkActive="link" routerLink="/home" >
+        Home
+      </p>
+
+      <p routerLinkActive="link"  routerLink="/how">
+        How it works
+      </p>
+
+      <p routerLinkActive="link"  routerLink="/faq">
+        Faqs
+      </p>
+
+      <p routerLinkActive="link" routerLink="/login">
+        Login
+      </p>
+
+      <p routerLinkActive="link"  class="active" routerLink="/signup">
+        Signup
+      </p>
+    </div>
+  </div>
+</div>

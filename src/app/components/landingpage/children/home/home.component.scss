@@ -1,0 +1,48 @@
+.parent{
+
+  padding-left: 100px;
+  padding-right: 100px;
+
+  .left{
+
+    .child{
+
+      h1{
+        font-family: 'Poppins', sans-serif;
+        margin-top: 25%;
+        font-size: 35px;
+        color: grey;
+      }
+
+      p{
+        width: 85%;
+        color: rgba(128, 128, 128, 0.918);
+        margin-top: 30px
+      }
+
+      .buttons{
+        margin-top: 30px;
+      }
+
+      .btn{
+        width: 200px;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .right{
+
+    .child{
+      padding-right: 12%;
+
+
+      img{
+        height: 550px;
+        margin-top: 1%;
+        margin-right: 12%
+      }
+    }
+  }
+}

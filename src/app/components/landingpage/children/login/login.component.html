@@ -1,0 +1,60 @@
+<div class="parent" >
+
+  <div class="row no-gutters">
+    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6  left">
+      <div class="child">
+        <h3 class="header tx">
+          AuthPass
+        </h3>
+
+        <div class="login-form" [ngSwitch]="switchValue">
+
+          <div class="login" *ngSwitchCase="'login'">
+            <h3>Welcome Back</h3>
+            <p>Login to access your credentials</p>
+
+            <form [formGroup]="loginForm">
+
+              <div class="form-group" [ngClass]="{ invalid: loginForm.get('email').invalid}">
+                <label for="email">Email</label>
+                <input type="email" formControlName="email" class="form-control"
+                [ngClass]="{ invalid: loginForm.get('email').invalid}">
+                <small class="text-danger" *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('required')">This field is required</small>
+                <small class="text-danger" *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('email')">
+                  This is not a valid email
+                </small>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" name="password" class="form-control"
+                [ngClass]="{ invalid: loginForm.get('email').invalid}">
+                <small class="text-danger" *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('required')">This field is required</small>
+                <small class="text-danger" *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('minlength')">
+                 A minimium length of 8 characters
+                </small>
+
+              </div>
+
+              <input type="submit" value="Submit" [disabled]="loginForm.invalid" class="btn btn-block pr text-white">
+
+              <p class="text-center tx forgot-password" (click)="switch('forgot')">Forgot Password</p>
+              <p class="text-center ">Don't have an account? <span class="tx forgot-password" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Create account</span></p>
+
+            </form>
+          </div>
+
+          <div *ngSwitchCase="'forgot'">
+            forgot password
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 right">
+      <div class="max"></div>
+    </div>
+  </div>
+
+</div>
