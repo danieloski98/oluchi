@@ -8,6 +8,7 @@ import { LoginModule } from './routes/api/login/login.module';
 import {MongooseModule} from '@nestjs/mongoose';
 import { UserModule } from './routes/user/user.module';
 import { TfaModule } from './routes/2fa/2fa.module';
+import { CredentialsModule } from './routes/credentials/credentials.module';
 
 @Module({
   imports: [HttpModule,
@@ -15,7 +16,8 @@ import { TfaModule } from './routes/2fa/2fa.module';
             MongooseModule.forRoot('mongodb://localhost/oluchi',
             { useNewUrlParser: true }),
             UserModule,
-            TfaModule],
+            TfaModule,
+            CredentialsModule],
   controllers: [AppController, AuthController, PasswordController],
   providers: [AppService],
 })

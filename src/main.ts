@@ -6,6 +6,7 @@ import { join } from 'path';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
+  const port = process.env.port || 3000;
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.enableCors();
   app.use(morgan('tiny'));
@@ -24,6 +25,6 @@ async function bootstrap() {
 
   const doc = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, doc);
-  await app.listen(3000);
+  await app.listen(port);
 }
 bootstrap();

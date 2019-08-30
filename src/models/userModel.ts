@@ -16,6 +16,11 @@ export const USER = new mongoose.Schema({
         required: true,
         trim: true,
     },
+    username: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     phone: {
         type: String,
         required: true,
@@ -29,8 +34,13 @@ export const USER = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: new Date().toLocaleDateString(),
+        required: true,
     },
+    sex: {
+        type: String,
+        required: true,
+        trim: true,
+    }
 });
 
 export interface IUser extends mongoose.Document {

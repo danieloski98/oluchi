@@ -1,4 +1,4 @@
-import { Controller, Post, Res, Body } from '@nestjs/common';
+import { Controller, Post, Res, Body, Get, UseGuards, Param } from '@nestjs/common';
 import { Response } from 'express';
 import { join } from 'path';
 import * as joi from 'joi';
@@ -6,6 +6,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { IUser } from 'src/models/userModel';
 import {DataBaseService} from './DatabaseServce';
+import { AuthorizationGuard } from '../../guards/authorization.guard';
 
 
 @Controller('user')
@@ -28,6 +29,9 @@ export class UserController {
             email: joi.string().required().min(8).trim(),
             phone: joi.string().required().min(11).max(11).trim(),
             password: joi.string().required().min(8).max(255).trim(),
+            sex: joi.string().required().trim(),
+            username: joi.string().required().trim(),
+            createdAt: joi.string().required().trim(),
         });
 
         // validating the body of the request
@@ -72,4 +76,33 @@ export class UserController {
             });
         }
     }
+
+    /**
+     * gets a particular user
+     */
+
+     @Get(':id')
+    //  @UseGuards(new AuthorizationGuard())
+     async getUser(@Res() res: Response, @Param() param: string): Promise<void> {
+         const id = param['id'];
+         try {
+             const result = await this.USER.findById(id);
+             console.log(result);
+             if (result) {
+                res.status(200).send({
+                    message: 'Success',
+                    data: result,
+                    error: null,
+                    date: new Date().toDateString(),
+                });
+             }
+         } catch (error) {
+             res.status(500).send({
+                 message: 'An error occured',
+                 data: null,
+                 error,
+                 date: new Date().toDateString(),
+             })
+         }
+     }
 }

@@ -39,7 +39,10 @@ export class LoginController {
                             const token = jwt.sign({ email: email.email, password: email.password}, 'SECRETKEY', {expiresIn: '2h'});
                             res.status(201).send({
                                 message: 'login successful',
-                                data: token,
+                                data: {
+                                    token,
+                                    user: emailUsed,
+                                },
                                 error: null,
                                 date: new Date().toLocaleDateString(),
                             });
