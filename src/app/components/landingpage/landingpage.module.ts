@@ -10,6 +10,8 @@ import { HomeComponent } from './children/home/home.component';
 import { FaqComponent } from './children/faq/faq.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserStateService } from 'src/app/state/user-state.service';
 
 const routes: Routes = [
   {
@@ -53,10 +55,14 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbToastModule
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    UserStateService,
   ]
 })
 export class LandingpageModule { }

@@ -16,6 +16,11 @@
   src: url('./assets/fonts/Overpass-Regular.ttf');
 }
 
+@font-face{
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Regular.ttf');
+}
+
 html, body { height: 100%; }
 body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

@@ -1,0 +1,42 @@
+<div class="parent">
+
+  <div class=" d-flex justify-content-center">
+    <div class=" profile-holder shadow">
+        <div *ngIf="loading" class="spinner">
+            <div  class="spinner-border tx" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div *ngIf="!loading" class="profile">
+            <div class="banner">
+              <img [src]='imageUrl' width="100" class="shadow rounded-circle" alt="">
+            </div>
+            <div class="d-flex justify-content-end edit-btn">
+                <img class="edit" src="../../../../../assets/icons/edit.svg" alt="">
+                <img class="edit ml-3" src="../../../../../assets/icons/trash-2.svg" alt="">
+            </div>
+            <hr>
+            <span class="text-center tx">Username</span>
+              <p class="text-center">{{ user.username }}</p>
+              <hr>
+              <div class="d-flex justify-content-center">
+                <div>
+                    <span class="text-center tx">Firstname</span>
+                    <p class="text-center">{{ user.firstname }}</p>
+                </div>
+                <div class="ml-4">
+                    <span class="text-center tx">Lastname</span>
+                    <p class="text-center">{{ user.lastname }}</p>
+                </div>
+              </div>
+              <hr>
+              <span class="text-center tx">Email</span>
+              <p class="text-center">{{ user.email }}</p>
+              <hr>
+              <span class="text-center tx">Password</span>
+              <p class="text-center">{{ user.password }}</p>
+
+          </div>
+    </div>
+  </div>
+</div>

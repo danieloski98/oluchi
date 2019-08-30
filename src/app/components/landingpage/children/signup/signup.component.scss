@@ -1,0 +1,39 @@
+.parent{
+
+  .left{
+
+    .header{
+      font-family: 'Poppins', sans-serif;
+      padding-top: 30px;
+      padding-left: 30px;
+    }
+
+    .sign-up-form{
+      padding-left: 70px;
+      margin-top: 5%;
+
+      h3{
+        font-family: 'Poppins', sans-serif;
+      }
+    }
+
+    form{
+      width: 500px;
+      margin-top: 50px;
+      margin-left: 70px
+    }
+
+  }
+
+  .right{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../../../../assets/images/attractive-beautiful-braided-hair-2587462.svg');
+
+    .max{
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.301);
+    }
+  }
+}

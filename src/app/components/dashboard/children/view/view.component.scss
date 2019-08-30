@@ -1,0 +1,34 @@
+.parent{
+  padding-right: 20px;
+
+  .info{
+    width: 500px;
+    height: 100%;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center !important;
+    padding-bottom: 10px;
+
+    .banner{
+      width: 100%;
+      height: 30vh;
+      background-color: #13be3a;
+      display: inline-flex;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+      color: white;
+      font-family: 'Poppins', sans-serif
+    }
+
+    .edit-btn{
+      margin: 20px;
+
+      .edit {
+        cursor: pointer;
+      }
+    }
+  }
+}

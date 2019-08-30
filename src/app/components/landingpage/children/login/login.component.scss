@@ -1,5 +1,13 @@
 .parent{
 
+  .toast{
+    width: 400px;
+    z-index: 10;
+    position: absolute;
+    top: 0.5%;
+    left: 250px
+  }
+
   .left{
 
     .header{

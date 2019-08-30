@@ -13,7 +13,7 @@
             <h3>Welcome Back</h3>
             <p>Login to access your credentials</p>
 
-            <form [formGroup]="loginForm">
+            <form (ngSumit)="login()" [formGroup]="loginForm">
 
               <div class="form-group" [ngClass]="{ invalid: loginForm.get('email').invalid}">
                 <label for="email">Email</label>
@@ -36,7 +36,8 @@
 
               </div>
 
-              <input type="submit" value="Submit" [disabled]="loginForm.invalid" class="btn btn-block pr text-white">
+              <input type="submit" value="Submit" [disabled]="loginForm.invalid"
+              (click)="login()" class="btn btn-block pr text-white">
 
               <p class="text-center tx forgot-password" (click)="switch('forgot')">Forgot Password</p>
               <p class="text-center ">Don't have an account? <span class="tx forgot-password" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Create account</span></p>
@@ -51,6 +52,11 @@
         </div>
 
       </div>
+
+      <ngb-toast *ngIf="showToast" header="Login Notification" (click)="showToast = false" class="toast">
+        <p>{{ message }}</p>
+      </ngb-toast>
+
     </div>
     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 right">
       <div class="max"></div>

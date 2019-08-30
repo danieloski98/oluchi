@@ -1,0 +1,39 @@
+.parent{
+
+  width: 300px;
+  margin-left: 20px;
+  padding-top: 20px;
+
+  hr{
+    background-color: lightgrey
+  }
+
+  .img-box{
+    width: 120px;
+    height: 120px;
+
+    img{
+      width: inherit;
+      height: inherit;
+      cursor: pointer;
+    }
+  }
+
+  .info{
+    margin-top: 20px;
+
+    .info:nth-child(2) {
+      margin-top: -10% !important;
+    }
+
+  }
+
+  .actions{
+    padding-left: 70px;
+    padding-right: 40px;
+
+    .actions:nth-child(1) {
+      border-radius: 10px !important;
+    }
+  }
+}

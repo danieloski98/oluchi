@@ -1,0 +1,39 @@
+<div class="parent">
+
+  <div class="edit d-flex justify-content-center">
+
+
+    <div class="info rounded shadow">
+
+      <div class="banner">
+        {{ getFirstCharacter(data.name).toUpperCase() }}
+      </div>
+
+      <div *ngIf="!edit" class="dont">
+        <div class="d-flex justify-content-end edit-btn">
+          <img class="edit" src="../../../../../assets/icons/edit.svg" alt="">
+          <img class="edit ml-3" src="../../../../../assets/icons/trash-2.svg" alt="">
+        </div>
+
+        <hr>
+
+        <span class="text-center tx">Website Name</span>
+        <p class="text-center">{{ data.name }}</p>
+        <hr>
+        <span class="text-center tx">Email</span>
+        <p class="text-center">{{ data.email }}</p>
+        <hr>
+        <span class="text-center tx">Phone</span>
+        <p class="text-center">{{ data.phone }}</p>
+        <hr>
+        <span class="text-center tx">Password</span>
+        <div class="d-flex justify-content-center">
+            <!-- <span *ngFor="let i of data.password">.</span> -->
+            <p class="text-center">{{ data.password }}</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
