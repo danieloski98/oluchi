@@ -44,7 +44,13 @@ export class DashboardComponent implements OnInit {
         console.log(data);
       }
     );
+  }
 
+  logout(): void {
+    // delete user
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 
 }

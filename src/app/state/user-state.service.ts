@@ -13,6 +13,8 @@ export class UserStateService {
   pageTitle: Observable<string> = this.pageTitleClone.asObservable();
   userClone = new BehaviorSubject({});
   user = this.userClone.asObservable();
+  passwordClone: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  passwordHolder = this.passwordClone.asObservable;
 
   constructor() { }
 
@@ -30,5 +32,9 @@ export class UserStateService {
 
   get getUser(): Observable<ICredential | {}> {
     return of<ICredential | {}>(this.user);
+  }
+
+  updatePassword(value): void {
+    this.passwordClone.next(value);
   }
 }

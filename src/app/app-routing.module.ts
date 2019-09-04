@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserCheckGuard } from './guard/user-check.guard';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./components/dashboard/dashboard.module').then( mod => mod.DashboardModule)
+    loadChildren: () => import('./components/dashboard/dashboard.module').then( mod => mod.DashboardModule),
+    canActivate: [UserCheckGuard]
   },
   {
     path: '*',
@@ -24,6 +26,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    UserCheckGuard
+  ]
 })
 export class AppRoutingModule { }

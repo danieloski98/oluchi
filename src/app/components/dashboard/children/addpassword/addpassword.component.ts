@@ -23,10 +23,11 @@ export class AddpasswordComponent implements OnInit {
     this.strength = 50;
     this.submiting = false;
     this.credentialForm = this.fb.group({
-      email: [''],
-      name: [''],
-      phone: [''],
-      password: [''],
+      email: ['', [ Validators.required, Validators.email]],
+      name: ['', Validators.required],
+      phone: ['', [ Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      type: ['', Validators.required]
     });
   }
 
@@ -35,15 +36,18 @@ export class AddpasswordComponent implements OnInit {
   }
 
   submit(): void {
+    const user = localStorage.getItem('user');
     this.submiting = true;
+
     const clone = {
-      userID: '5d681ff7745dcb29c942484d',
+      userID: user,
       name: this.credentialForm.get('name').value,
       email: this.credentialForm.get('email').value,
       phone: this.credentialForm.get('phone').value,
       password: this.credentialForm.get('password').value,
-      type: 'App',
-    }
+      type: this.credentialForm.get('type').value,
+    };
+
     this.http.post('http://localhost:3000/credentials', clone)
     .subscribe(
       data => {

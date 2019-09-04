@@ -13,6 +13,10 @@ import { ViewComponent } from './children/view/view.component';
 import { GeneratePasswordComponent } from './children/generate-password/generate-password.component';
 import { UserStateService } from 'src/app/state/user-state.service';
 import { ProfileComponent } from './children/profile/profile.component';
+import { UserCheckGuard } from 'src/app/guard/user-check.guard';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
   {
@@ -59,13 +63,17 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NgbProgressbarModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModalModule,
+    MatProgressBarModule,
+    MatTableModule,
   ],
   exports: [
     RouterModule
   ],
   providers: [
     UserStateService,
+    UserCheckGuard
   ]
 })
 export class DashboardModule { }

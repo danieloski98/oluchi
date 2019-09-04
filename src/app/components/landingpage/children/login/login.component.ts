@@ -53,18 +53,17 @@ export class LoginComponent implements OnInit {
         this.message = data.message; setTimeout(() => {
         this.showToast = false;
         data.data['user'].forEach(element => {
-         this.userService.addUser(element._id);
          localStorage.setItem('user', element._id);
          localStorage.setItem('token', data.data['token']);
          });
          // console.log(data.data['user']);
         this.router.navigate(['/dashboard']);
-                             }, 10000); },
+                             }, 1000); },
       error => { console.log(error); this.showToast = true;
                  this.message = error.error.message;
                  setTimeout(() => {
           this.showToast = false;
-        }, 10000);
+        }, 1000);
        }
     );
   }

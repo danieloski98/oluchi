@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserStateService } from 'src/app/state/user-state.service';
+import * as RW from 'random-words';
 
 @Component({
   selector: 'app-generate-password',
@@ -12,6 +13,7 @@ export class GeneratePasswordComponent implements OnInit {
 
   ngOnInit() {
     this.userSer.changeTitle('Generate Password');
+    console.log(RW.words);
   }
 
 }

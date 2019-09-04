@@ -15,6 +15,7 @@ export class LeftPanelComponent implements OnInit {
   male = '../../../../../assets/images/avmale.svg';
   female = '../../../../../assets/images/avfemale.svg';
   imageUrl = '';
+  userFound: boolean;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -27,8 +28,10 @@ export class LeftPanelComponent implements OnInit {
               private http: HttpClient) { }
 
   ngOnInit() {
+   this.userFound = true;
    const user = localStorage.getItem('user');
    console.log(localStorage.getItem('token'));
+   console.log(this.router.url);
    this.http.get<ICredential>(`http://localhost:3000/user/${user}`, this.httpOptions)
    .subscribe(
      (data) => {
@@ -40,6 +43,7 @@ export class LeftPanelComponent implements OnInit {
        } else {
          this.imageUrl = this.female;
        }
+      //  this.userFound = true;
      },
      error => {
        console.log(`this is an error ${error}`);

@@ -26,6 +26,9 @@ export class ViewComponent implements OnInit {
 
   ngOnInit() {
     this.edit = false;
+    const name = 'qwerty';
+    let n = name.search('[@,$,%,&]');
+    alert(n);
     this.showPassword = false;
     this.active.params.subscribe(
       data => {
