@@ -17,6 +17,9 @@ import { UserCheckGuard } from 'src/app/guard/user-check.guard';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import {MatFormFieldModule, MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 const routes: Routes = [
   {
@@ -67,6 +70,9 @@ const routes: Routes = [
     NgbModalModule,
     MatProgressBarModule,
     MatTableModule,
+    ShowHidePasswordModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     RouterModule
