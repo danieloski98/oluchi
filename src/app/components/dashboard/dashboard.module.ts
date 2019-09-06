@@ -20,6 +20,8 @@ import { MatTableModule } from '@angular/material/table';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import {MatFormFieldModule, MatFormFieldAppearance } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { DialogsModule } from '../dialogs/dialogs.module';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const routes: Routes = [
   {
@@ -72,7 +74,9 @@ const routes: Routes = [
     MatTableModule,
     ShowHidePasswordModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    DialogsModule,
+    MatDialogModule
   ],
   exports: [
     RouterModule

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ICredential } from '../../../../globals/User.interface';
 import { UserStateService } from 'src/app/state/user-state.service';
 import { NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog, DialogPosition} from '@angular/material/dialog';
+import { EditDialogComponent } from 'src/app/components/dialogs/edit-dialog/edit-dialog.component';
 
 
 @Component({
@@ -15,8 +17,6 @@ import { NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-b
 export class PasswordComponent implements OnInit {
 
   password: Array<ICredential>;
-  itemId: string;
-  index: number;
   state: string;
   itemName: string;
   data: ICredential[];
@@ -32,7 +32,8 @@ export class PasswordComponent implements OnInit {
               private router: Router,
               private userServ: UserStateService,
               private modal: NgbModal,
-              config: NgbModalConfig) {
+              config: NgbModalConfig,
+              private dialog: MatDialog) {
                 config.backdrop = 'static';
                 config.keyboard = false;
                }
@@ -69,11 +70,14 @@ export class PasswordComponent implements OnInit {
     return name.charAt(0);
   }
 
-  openModal(template, index: number, item: ICredential) {
-    this.modal.open(template);
-    this.index = index;
-    this.itemId = item['_id'];
-    this.itemName = item['name'];
+  openEditModal(elemet): void {
+    let pos = {
+      top: '50px'
+    }
+    const dialogRef = this.dialog.open(EditDialogComponent,
+    {data: elemet, width: '500px', disableClose: true,
+    hasBackdrop: true,
+    position: pos});
   }
 
 
