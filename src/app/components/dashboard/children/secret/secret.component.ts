@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserStateService } from 'src/app/state/user-state.service';
 
 @Component({
   selector: 'app-secret',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecretComponent implements OnInit {
 
-  constructor() { }
+  activity: string;
+
+  constructor(private userSer: UserStateService) { }
 
   ngOnInit() {
+    this.activity = 'listing';
+    this.userSer.changeTitle('Secret Question');
   }
 
 }

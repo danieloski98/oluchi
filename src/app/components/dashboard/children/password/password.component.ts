@@ -6,6 +6,7 @@ import { UserStateService } from 'src/app/state/user-state.service';
 import { NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { MatDialog, DialogPosition} from '@angular/material/dialog';
 import { EditDialogComponent } from 'src/app/components/dialogs/edit-dialog/edit-dialog.component';
+import { DeleteDialogComponent } from 'src/app/components/dialogs/delete-dialog/delete-dialog.component';
 
 
 @Component({
@@ -63,42 +64,84 @@ export class PasswordComponent implements OnInit {
       }
     );
 
-    this.userServ.changeTitle('Dashboard');
-  }
-
-  getFirstCharacter(name: string): string {
-    return name.charAt(0);
+    this.userServ.changeTitle('Passwords');
   }
 
   openEditModal(elemet): void {
-    let pos = {
+    const pos = {
       top: '50px'
-    }
+    };
     const dialogRef = this.dialog.open(EditDialogComponent,
     {data: elemet, width: '500px', disableClose: true,
     hasBackdrop: true,
     position: pos});
-  }
 
+    dialogRef.afterClosed()
+    .subscribe(() => {
+      this.state = 'loading';
 
-  delete(): void {
-    this.state = 'loading';
-    this.modal.dismissAll();
-    this.http.delete(`http://localhost:3000/credentials/${this.itemId}`, this.httpOptions)
+      const user = localStorage.getItem('user');
+      if (user === null || user === undefined) {
+      this.router.navigate((['/login']));
+    }
+      this.http.get(`http://localhost:3000/credentials/user/${user}`, this.httpOptions)
     .subscribe(
-      (data) => {
+      (data: ICredential[]) => {
         console.log(data);
-        this.password.splice(this.index, 1);
+        this.password = data;
+        this.data = this.password;
         if (this.password.length === 0) {
           this.state = 'empty';
         } else {
           this.state = 'contain';
         }
       },
-      (error) => {
+      error => {
         console.log(error);
+        this.state = 'error';
       }
     );
+
+    });
+
+  }
+
+  openDeleteModal(elemet): void {
+    const pos = {
+      top: '50px'
+    };
+    const dialogRef = this.dialog.open(DeleteDialogComponent,
+    {data: elemet, width: '500px', disableClose: true,
+    hasBackdrop: true,
+    position: pos});
+
+    dialogRef.afterClosed()
+    .subscribe(() => {
+      this.state = 'loading';
+
+      const user = localStorage.getItem('user');
+      if (user === null || user === undefined) {
+      this.router.navigate((['/login']));
+    }
+      this.http.get(`http://localhost:3000/credentials/user/${user}`, this.httpOptions)
+    .subscribe(
+      (data: ICredential[]) => {
+        console.log(data);
+        this.password = data;
+        this.data = this.password;
+        if (this.password.length === 0) {
+          this.state = 'empty';
+        } else {
+          this.state = 'contain';
+        }
+      },
+      error => {
+        console.log(error);
+        this.state = 'error';
+      }
+    );
+
+    });
   }
 
   navigate(id, name): void {
@@ -124,15 +167,6 @@ export class PasswordComponent implements OnInit {
         this.state = 'error';
       }
     );
-  }
-
-  checkPassword(password: string) {
-    if (password.length <= 8 && !password.includes('@&.%$!')) {
-      return 'Weak';
-    }
-    if (password.length >= 10 && !password.includes('@&.%$!')) {
-      return 'fair';
-    }
   }
 
   c(element): void {

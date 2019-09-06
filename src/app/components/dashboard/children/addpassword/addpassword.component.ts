@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserStateService } from 'src/app/state/user-state.service';
 
 @Component({
   selector: 'app-addpassword',
@@ -16,9 +17,11 @@ export class AddpasswordComponent implements OnInit {
   submiting: boolean;
 
   constructor(private fb: FormBuilder,
-              private http: HttpClient, private router: Router) { }
+              private http: HttpClient, private router: Router,
+              private userState: UserStateService) { }
 
   ngOnInit() {
+    this.userState.changeTitle('Add New Credential');
     this.noError = false;
     this.strength = 50;
     this.submiting = false;

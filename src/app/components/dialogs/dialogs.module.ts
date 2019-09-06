@@ -5,23 +5,29 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 
 @NgModule({
-  declarations: [EditDialogComponent, DeleteDialogComponent],
+  declarations: [EditDialogComponent, DeleteDialogComponent, LogoutDialogComponent],
   imports: [
     CommonModule,
     MatButtonModule,
     MatDialogModule,
-    ShowHidePasswordModule
+    ShowHidePasswordModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   exports: [
     EditDialogComponent,
     DeleteDialogComponent,
+    LogoutDialogComponent
   ],
   entryComponents: [
     EditDialogComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    LogoutDialogComponent
   ]
 })
 export class DialogsModule { }

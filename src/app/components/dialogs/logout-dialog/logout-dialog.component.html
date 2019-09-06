@@ -1,0 +1,14 @@
+<div class="parent">
+  <p class="tx text-center">Are you sure you want to logout?</p>
+  <div *ngIf="!loggingout" class="d-flex justify-content-center">
+    <div >
+      <button mat-flat-button class="btn-block" color="warn" (click)="logout()">Continue</button>
+    </div>
+    <div class="ml-2">
+      <button mat-flat-button mat-dialog-close class="btn-block pr text-white " >Cancel</button>
+    </div>
+  </div>
+  <div *ngIf="loggingout" class="d-flex justify-content-center">
+    <div>Logging You Out</div> <div class="ml-4 lds-dual-ring"></div>
+  </div>
+</div>

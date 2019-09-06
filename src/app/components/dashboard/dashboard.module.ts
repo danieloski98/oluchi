@@ -22,6 +22,9 @@ import {MatFormFieldModule, MatFormFieldAppearance } from '@angular/material/for
 import { MatInputModule } from '@angular/material/input';
 import { DialogsModule } from '../dialogs/dialogs.module';
 import {MatDialogModule} from '@angular/material/dialog';
+import { SecretComponent } from './children/secret/secret.component';
+import { QuestionsComponent } from './secret/questions/questions.component';
+import { AddComponent } from './secret/add/add.component';
 
 const routes: Routes = [
   {
@@ -30,6 +33,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        redirectTo: 'password',
+        pathMatch: 'full'
+      },
+      {
+        path: 'password',
         component: PasswordComponent,
       },
       {
@@ -51,6 +59,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'secret',
+        component: SecretComponent
       }
     ]
   }
@@ -61,7 +73,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [ LeftPanelComponent,
      SettingsComponent, PasswordComponent,
-      DashboardComponent, AddpasswordComponent, ViewComponent, GeneratePasswordComponent, ProfileComponent,
+      DashboardComponent, AddpasswordComponent, ViewComponent, GeneratePasswordComponent, ProfileComponent, SecretComponent, QuestionsComponent, AddComponent,
     ],
   imports: [
     CommonModule,

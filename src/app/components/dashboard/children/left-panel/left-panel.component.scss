@@ -1,5 +1,12 @@
 .parent{
 
+  .active{
+    border-left: 3px solid #13be3a;
+    background-color: #13be3b3d;
+    color: grey;
+    padding-left: 100px;
+  }
+
   width: 100%;
   // margin-left: 20px;
   // padding-top: 20px;
@@ -36,10 +43,15 @@
 
   .actions{
     // padding-left: 70px;
-    margin-left: 40px;
-    padding-right: 40px;
+    margin-left: 0px;
+    padding-right: 0px;
     margin-top: 15%;
     font-size: 12px;
+
+    div{
+      padding-left: 10px;
+      transition: margin .8s ease-in-out;
+    }
 
    p{
      width: 100%;

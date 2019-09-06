@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { UserStateService } from 'src/app/state/user-state.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LogoutDialogComponent } from '../dialogs/logout-dialog/logout-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +16,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router,
               private ar: ActivatedRoute,
-              private userSer: UserStateService) { }
+              private userSer: UserStateService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.loading = false;
@@ -48,9 +51,12 @@ export class DashboardComponent implements OnInit {
 
   logout(): void {
     // delete user
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    // localStorage.removeItem('user');
+    // localStorage.removeItem('token');
+    // this.router.navigate(['/']);
+    this.dialog.open(LogoutDialogComponent,
+    {position: {top: '70px', left: '1000px'}, disableClose: true,
+    width: '300px', hasBackdrop: false});
   }
 
 }

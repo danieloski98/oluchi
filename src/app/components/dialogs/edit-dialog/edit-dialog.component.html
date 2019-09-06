@@ -9,34 +9,40 @@
 
   <hr>
   <mat-dialog-content>
-    <div class="d-flex justify-content-statrt">
-      <div class="w-100">
-        <div class="form-group w-100">
-          <label >Email</label>
-          <input type="text" [value]="data.email" class="w-100 form-control">
-        </div>
-        <div class="form-group w-100">
-            <label >Phone no.</label>
-            <input type="text" [value]="data.phone" class="w-100 form-control">
-        </div>
-        <div class="form-group w-100">
-            <label >Password</label>
-            <show-hide-password size="md" btnStyle=""  [btnOutline]="false">
-                <input type="password" name="..." [value]="data.password" >
-            </show-hide-password>
-        </div>
+    <form [formGroup]="form">
 
-        <div class="">
-          <div>
-            <button *ngIf="!submiting" class="pr btn text-white btn-block" (click)="update()">
-              <div > <span>Submit</span></div>
-            </button>
-            <div *ngIf="submiting" class="d-flex justify-content-center tx">
-                <div>Submiting</div> <div class="lds-dual-ring"></div>
-             </div>
+      <div class="d-flex justify-content-statrt">
+        <div class="w-100">
+          <div class="form-group w-100">
+            <label >Email</label>
+            <input type="text" formControlName="email" class="w-100 form-control">
+          </div>
+          <div class="form-group w-100">
+              <label >Phone no.</label>
+              <input type="text" formControlName="phone" class="w-100 form-control">
+          </div>
+          <div class="form-group w-100">
+              <label >Password</label>
+              <show-hide-password size="md" btnStyle=""  [btnOutline]="false">
+                  <input type="password" formControlName="password">
+              </show-hide-password>
+          </div>
+
+          <div class="">
+            <div>
+              <button [disabled]="form.invalid" *ngIf="!submiting" class="pr btn text-white btn-block" (click)="update()">
+                <div > <span>Submit</span></div>
+              </button>
+              <div *ngIf="submiting" class="d-flex justify-content-center tx">
+                  <div>Submiting</div> <div class="lds-dual-ring"></div>
+               </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <p *ngIf="message" class="text-center tx mt-2">{{ message }}</p>
+
+    </form>
   </mat-dialog-content>
 </div>

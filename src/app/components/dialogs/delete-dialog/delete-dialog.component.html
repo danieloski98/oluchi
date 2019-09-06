@@ -1,1 +1,24 @@
-<p>delete-dialog works!</p>
+<div class="parent">
+
+    <div class="d-flex justify-content-between">
+        <h5  mat-dialog-title>Delete <span class="title tx">{{ data.name.toLocaleUpperCase() }}</span></h5>
+        <div>
+            <button [disabled]="submiting" mat-flat-button color="warn" mat-dialog-close><img src="../../../../assets/icons/x-circle.svg" class="x-close" alt=""></button>
+        </div>
+      </div>
+
+      <mat-dialog-content>
+        <p class="tx text-center">Are you sure you want to delete {{ data.name }}</p>
+        <div class="">
+            <div>
+              <button *ngIf="!submiting" class="pr btn text-white btn-block" (click)="delete()">
+                <div > <span>Delete</span></div>
+              </button>
+              <div *ngIf="submiting" class="d-flex justify-content-center tx">
+                  <div class="text-danger">Deleting {{ data.name }}</div> <div class="lds-dual-ring ml-4"></div>
+               </div>
+            </div>
+          </div>
+      </mat-dialog-content>
+
+</div>

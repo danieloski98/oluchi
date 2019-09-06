@@ -1,5 +1,4 @@
-.parent {
-  width: 100%;
+.parent{
 
   // loader css
 
@@ -15,8 +14,8 @@
     height: 26px;
     margin: 1px;
     border-radius: 50%;
-    border: 5px solid #ec1e1e;
-    border-color: #ec1e1e transparent #ec1e1e transparent;
+    border: 5px solid #13be3a;
+    border-color: #13be3a transparent #13be3a transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
   @keyframes lds-dual-ring {
