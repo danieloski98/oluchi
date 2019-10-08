@@ -1,0 +1,27 @@
+<div [ngSwitch]="state" class="parent d-flex justify-content-center">
+  <div *ngSwitchCase="'verify'" class="form-box border border-success rounded">
+    <div class="img-box d-flex justify-content-center">
+      <img src="../../../../../assets/images/app.svg" width="150" alt="">
+    </div>
+    <div class="text-center tx pt-2">
+      <p>Verify Phone Number</p>
+      <span class="tx">A token have been sent to your phone number</span>
+    </div>
+    <div class="form-group mt-3 w-100">
+      <input type="text" class="form-control w-100" formControl="OTP">
+      <small *ngIf="OTP.hasError('minlength') || OTP.hasError('maxlength') || OTP.hasError('required')" class="text-danger">Invalid OTP code</small>
+    </div>
+    <button (click)="state='verified'" class="btn btn-success btn-block">Verify</button>
+
+    <small class="text-danger">Resend code</small>
+  </div>
+
+  <div *ngSwitchCase="'verified'" class="form-box border border-success rounded">
+    <div class="d-flex justify-content-center">
+      <img src="../../../../../assets/images/confirm.svg" width="200" alt="">
+    </div>
+
+    <p class="text-center tx">Phone number Verified</p>
+    <button class=" btn-block">Proceed</button>
+  </div>
+</div>

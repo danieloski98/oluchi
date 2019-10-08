@@ -7,11 +7,11 @@ import { HowComponent } from './children/how/how.component';
 import { SignupComponent } from './children/signup/signup.component';
 import { LoginComponent } from './children/login/login.component';
 import { HomeComponent } from './children/home/home.component';
-import { FaqComponent } from './children/faq/faq.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserStateService } from 'src/app/state/user-state.service';
+import { VerifyComponent } from './children/verify/verify.component';
 
 const routes: Routes = [
   {
@@ -40,8 +40,8 @@ const routes: Routes = [
         component: HowComponent
       },
       {
-        path: 'faq',
-        component: FaqComponent
+        path: 'verify',
+        component: VerifyComponent
       }
     ]
   }
@@ -50,7 +50,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [LandingpageComponent, NavbarComponent, HowComponent, SignupComponent, LoginComponent, HomeComponent, FaqComponent],
+  declarations: [LandingpageComponent, NavbarComponent, HowComponent, SignupComponent, LoginComponent, HomeComponent, VerifyComponent ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

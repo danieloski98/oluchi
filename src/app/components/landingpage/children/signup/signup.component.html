@@ -40,6 +40,7 @@
                   <div class="form-group">
                       <label > Phone number</label>
                     <input type="text" class="form-control" formControlName="phone" id="">
+                    <small class="text-danger">Please put in a valid number</small>
                   </div>
                 </div>
             </div>
@@ -66,7 +67,10 @@
               <input type="password" class="form-control" formControlName="password" id="">
             </div>
 
-            <button (click)="submit()" [disabled]="signUpForm.invalid" class="btn btn-success btn-block">Submit</button>
+            <button (click)="submit()" [disabled]="signUpForm.invalid" class="btn btn-success btn-block">
+              <span *ngIf="!loading">Submit</span>
+              <span *ngIf="loading">Submitting</span>
+            </button>
 
         </form>
 

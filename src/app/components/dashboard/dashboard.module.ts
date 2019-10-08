@@ -23,8 +23,9 @@ import { MatInputModule } from '@angular/material/input';
 import { DialogsModule } from '../dialogs/dialogs.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SecretComponent } from './children/secret/secret.component';
-import { QuestionsComponent } from './secret/questions/questions.component';
-import { AddComponent } from './secret/add/add.component';
+import { QuestionsComponent } from './children/secret/children/questions/questions.component';
+import { AddComponent } from './children/secret/children/add/add.component';
+import { MatButtonModule} from '@angular/material/button';
 
 const routes: Routes = [
   {
@@ -73,7 +74,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [ LeftPanelComponent,
      SettingsComponent, PasswordComponent,
-      DashboardComponent, AddpasswordComponent, ViewComponent, GeneratePasswordComponent, ProfileComponent, SecretComponent, QuestionsComponent, AddComponent,
+      DashboardComponent, AddpasswordComponent,
+      ViewComponent, GeneratePasswordComponent,
+      ProfileComponent, SecretComponent,
+      QuestionsComponent, AddComponent,
     ],
   imports: [
     CommonModule,
@@ -88,7 +92,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     DialogsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   exports: [
     RouterModule

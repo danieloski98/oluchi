@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signUpForm: FormGroup;
+  loading: boolean = null;
 
   constructor(private fb: FormBuilder, private http: HttpClient,
               private router: Router) { }
 
   ngOnInit() {
+    this.loading = false;
     this.signUpForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.minLength(3)]],
       lastname: ['', [Validators.required, Validators.minLength(3)]],
@@ -28,16 +30,25 @@ export class SignupComponent implements OnInit {
   }
 
   submit(): void {
+    this.loading = true;
+    // setTimeout(() => {
+    //   this.loading = false;
+    //   this.router.navigate(['/verify']);
+    // }, 5000);
     this.signUpForm.value['createdAt'] = new Date().toLocaleDateString();
     this.http.post('http://localhost:3000/user', this.signUpForm.value)
     .subscribe(
       data => {
+        setTimeout(() => {
+        this.loading = true;
         console.log(data);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/verify']);
+        }, 5000);
       },
       error => {
+        const message = error.error.message;
         console.log(error);
-        alert('An error occured');
+        alert(message);
       }
     );
   }

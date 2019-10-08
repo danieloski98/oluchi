@@ -8,9 +8,11 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import { ViewQuestionComponent } from './view-question/view-question.component';
+import { DeleteQuestionComponent } from './delete-question/delete-question.component';
 
 @NgModule({
-  declarations: [EditDialogComponent, DeleteDialogComponent, LogoutDialogComponent],
+  declarations: [EditDialogComponent, DeleteDialogComponent, LogoutDialogComponent, ViewQuestionComponent, DeleteQuestionComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -22,12 +24,16 @@ import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
   exports: [
     EditDialogComponent,
     DeleteDialogComponent,
-    LogoutDialogComponent
+    LogoutDialogComponent,
+    ViewQuestionComponent,
+    DeleteQuestionComponent
   ],
   entryComponents: [
     EditDialogComponent,
     DeleteDialogComponent,
-    LogoutDialogComponent
+    LogoutDialogComponent,
+    ViewQuestionComponent,
+    DeleteQuestionComponent
   ]
 })
 export class DialogsModule { }

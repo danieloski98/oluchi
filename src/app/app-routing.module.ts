@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./components/dashboard/dashboard.module').then( mod => mod.DashboardModule),
-    canActivate: [UserCheckGuard]
+    // canActivate: [UserCheckGuard]
   },
   {
     path: '*',
@@ -25,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true, urlUpdateStrategy: 'eager'})],
   exports: [RouterModule],
   providers: [
     UserCheckGuard
