@@ -10,16 +10,14 @@ export class AuthorizationGuard implements CanActivate {
   ): boolean  {
     const httpClone: Request = context.switchToHttp().getRequest();
     const auth = httpClone.headers['authorization'];
-    console.log(auth);
-    if (typeof auth !== 'object') {
-      const valid = jwt.verify(auth, 'SECRETKEY');
-      if (typeof valid === 'string') {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
+    if (auth) {
+      // return true;
+     const value = jwt.verify(auth, 'SECRETKEY');
+     if (value) {
+       return true;
+     }
     }
+
+    return false;
   }
 }

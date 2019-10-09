@@ -8,7 +8,6 @@ import { IUser } from 'src/models/userModel';
 import {DataBaseService} from './DatabaseServce';
 import { AuthorizationGuard } from '../../guards/authorization.guard';
 
-
 @Controller('user')
 export class UserController {
 
@@ -82,12 +81,12 @@ export class UserController {
      */
 
      @Get(':id')
-    //  @UseGuards(new AuthorizationGuard())
+     @UseGuards(new AuthorizationGuard())
      async getUser(@Res() res: Response, @Param() param: string): Promise<void> {
          const id = param['id'];
          try {
              const result = await this.USER.findById(id);
-             console.log(result);
+            //  console.log(result);
              if (result) {
                 res.status(200).send({
                     message: 'Success',
@@ -97,12 +96,13 @@ export class UserController {
                 });
              }
          } catch (error) {
+             console.log('from controller');
              res.status(500).send({
                  message: 'An error occured',
                  data: null,
                  error,
                  date: new Date().toDateString(),
-             })
+             });
          }
      }
 }

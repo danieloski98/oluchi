@@ -9,6 +9,7 @@ import {MongooseModule} from '@nestjs/mongoose';
 import { UserModule } from './routes/user/user.module';
 import { TfaModule } from './routes/2fa/2fa.module';
 import { CredentialsModule } from './routes/credentials/credentials.module';
+import { SecretquestionModule } from './routes/secretquestion/secretquestion.module';
 
 @Module({
   imports: [HttpModule,
@@ -17,7 +18,8 @@ import { CredentialsModule } from './routes/credentials/credentials.module';
             { useNewUrlParser: true }),
             UserModule,
             TfaModule,
-            CredentialsModule],
+            CredentialsModule,
+            SecretquestionModule],
   controllers: [AppController, AuthController, PasswordController],
   providers: [AppService],
 })

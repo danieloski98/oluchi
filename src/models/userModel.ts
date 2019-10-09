@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { boolean } from 'joi';
 
 export const USER = new mongoose.Schema({
     firstname: {
@@ -40,7 +41,18 @@ export const USER = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-    }
+    },
+    preferences: {
+        type: {},
+        default: {
+            'theme': 'light',
+            '2FA': false,
+        },
+    },
+    // verified: {
+    //     type: boolean,
+    //     default: false,
+    // },
 });
 
 export interface IUser extends mongoose.Document {
@@ -50,4 +62,7 @@ export interface IUser extends mongoose.Document {
     phone: string;
     password: string;
     createdAt?: Date;
+    username: string;
+    sex: string;
+    verified: boolean;
 }

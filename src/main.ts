@@ -18,7 +18,7 @@ async function bootstrap() {
 
   const options = new DocumentBuilder()
   .setTitle('AuthPass App')
-  .setDescription('An app for authentication')
+  .setDescription('An app for 2 factor authentication')
   .setVersion('1')
   .addTag('Auth')
   .build();

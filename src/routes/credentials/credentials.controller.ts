@@ -1,9 +1,10 @@
-import { Controller, Post, Res, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Res, Body, Get, Param, UseGuards, Delete, Put } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Document } from 'mongoose';
 import { Response } from 'express';
 import * as joi from 'joi';
+import { AuthorizationGuard } from '../../guards/authorization.guard';
 
 interface ICredential extends Document {
     UserId: string;
@@ -45,13 +46,39 @@ export class CredentialsController {
         }
     }
 
-    @Get()
+    @Get('')
     async getAll(@Res() res: Response): Promise<void> {
         const result = await this.credential.find();
         res.send(result);
     }
 
+    @Get('user/:userId')
+    @UseGuards( new AuthorizationGuard())
+    async getUserCredentials( @Res() res: Response, @Param() param): Promise<void> {
+        const userid = param['userId'];
+        try {
+            const result = await this.credential.find({ userID: userid });
+            res.send(result);
+        } catch (error) {
+            res.send(error);
+        }
+    }
+
+    @Delete(':id')
+    @UseGuards( new AuthorizationGuard())
+    async deleteCredential(@Res() res: Response, @Param() param): Promise<void> {
+        const id = param.id;
+        try {
+            const del = await this.credential.findByIdAndDelete(id);
+            console.log(del);
+            res.send(del);
+        } catch (error) {
+            res.send(error);
+        }
+    }
+
     @Get(':id')
+    @UseGuards( new AuthorizationGuard())
     async getOne(@Res() res: Response, @Param() param): Promise<void> {
         const id = param.id;
         try {
@@ -60,5 +87,28 @@ export class CredentialsController {
         } catch (error) {
             res.send(error);
         }
+    }
+
+    @Put(':id')
+    @UseGuards( new AuthorizationGuard())
+    async update(@Res() res: Response, @Body() body: ICredential, @Param() param: string): Promise<void> {
+        try {
+            const _id = param['id'];
+            const updatedValued = await this.credential.findByIdAndUpdate(_id, { $set: body});
+            res.status(201).send({
+                message: 'Updated successfull',
+                data: updatedValued,
+                error: null,
+                date: new Date().toLocaleDateString(),
+            });
+        } catch (error) {
+            res.status(500).send({
+                message: 'An error occured while trying to update this field',
+                data: null,
+                error,
+                date: new Date().toLocaleDateString(),
+            });
+        }
+
     }
 }

@@ -1,7 +1,6 @@
-import { Controller, Get, Res, HttpException } from '@nestjs/common';
+import { Controller, Get, Res, HttpException, All } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Response } from 'express';
-
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
